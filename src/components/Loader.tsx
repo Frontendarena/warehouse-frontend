@@ -21,9 +21,7 @@ export const LoaderComponent = () => {
   useEffect(() => {
     axios.interceptors.request.use(
       function (config: any) {
-        const user = JSON.parse(sessionStorage.getItem("user") || "{}");
         setLoadingCount(loadingCount + 1);
-        config.headers["Authorization"] = "Bearer " + user.accessToken;
         return config;
       },
       function (error: any) {
